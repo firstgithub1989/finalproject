@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: data-retriever
+
+server:
+  port: 8090
+
+#error:
+#  path: /index.html
+#
+#error:
+#  path:
+#    whitelabel:
+#      enabled: false
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8302/eureka/
+  instance:
+    hostname: localhost

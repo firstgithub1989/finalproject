@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: eureka-service
+
+server:
+  port: 8302
+#  ssl:
+#      key-store: classpath:KeyStore1.jks
+#      key-store-password: password
+#      key-password: password
+
+security:
+  basic:
+    enabled: false
+
+#ribbon:
+#  IsSecure: true
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:8302/eureka/
+    server:
+      waitTimeInMsWhenSyncEmpty: 0
+  instance:
+    hostname: localhost
+
+#zuul:
+#  #Service will be mapped under the /api URI
+#  prefix: /api
+#  routes:
+#    data-retriever:
+#      path: /data-retriever/**
+#      url: http://localhost:8300
+#    buy-service:
+#      path: /buy-service/**
+#      url: http://localhost:8301
+#    sidecar:
+#      path: /sidecar/**
+#      url: http://localhost:5000

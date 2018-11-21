@@ -1,0 +1,14 @@
+[
+  { 
+    "coinName": "BTC",
+    "total": "12",
+    "inOrders": "1",
+    "available": "11"
+  },
+  { 
+    "coinName": "XRP",
+    "total": "15",
+    "inOrders": "1",
+    "available": "11"
+  }
+]

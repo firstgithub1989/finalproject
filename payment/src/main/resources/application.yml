@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: payment
+
+server:
+  port: 8087
+
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+     defaultZone: http://localhost:8302/eureka/
+  instance:
+    hostname: localhost
+
+
+#keycloak:
+#  auth-server-url: http://localhost:8080/auth
+#  realm: CryptoCurrency
+#  public-client: true
+#  resource: login
+#  security-constraints[0].authRoles[0]: user
+#  security-constraints[0].securityCollections[0].patterns[0]: /buy-service/*
+
+  #credentials:
+   #     secret: 942227b3-54cb-458f-aa09-adc084e9da9c

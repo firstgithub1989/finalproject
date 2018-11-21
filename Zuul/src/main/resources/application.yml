@@ -1,0 +1,125 @@
+server:
+  port: ${PORT:8304}
+
+
+
+#  ssl:
+#      key-store: classpath:KeyStore1.jks
+#      key-store-password: password
+#      key-password: password
+#  error:
+#    path: /index.html
+#    whitelabel:
+#      enabled: false
+spring:
+  application:
+    name: gateway
+  security:
+    enabled: false
+
+security:
+  basic:
+    enabled: false
+  user:
+    #name: root
+    password: pass
+  ignored:
+    - "*.bundle.*"
+
+management:
+  security:
+    enabled: false
+
+
+
+#ribbon:
+#  IsSecure: true
+#
+#error:
+#  path: /index.html
+
+#spring:
+#  session:
+#    store-type: redis
+
+endpoints:
+  routes:
+    sensitive: false
+
+zuul:
+  #Service will be mapped under the /api URI
+  prefix: /api
+  sensitiveHeaders:
+  ignoredServices: '*'
+  routes:
+    proxy:
+      path: /proxy/**
+      sensitive-headers:
+      serviceId: proxy
+      url: http://localhost:8304
+    data-retriever:
+      path: /data-retriever/**
+      sensitive-headers:
+      serviceId: data-retriever
+      url: http://localhost:8090
+    buy-service:
+      path: /buy-service/**
+      sensitive-headers:
+      serviceId: buy-service
+      url: http://localhost:8301
+    payment:
+      path: /payment/**
+      sensitive-headers:
+      serviceId: payment
+      url: http://localhost:8087
+    sidecar:
+      path: /sidecar/**
+      sensitive-headers:
+      serviceId: sidecar
+      url: http://localhost:5000
+
+ribbon:
+  ReadTimeout: 10000
+
+
+#security:
+#  user:
+#    name: root
+#    password: password
+#  oauth2:
+#    client:
+#      accessTokenUri: http://localhost:8304/uua/oauth/token #8765
+#      userAuthorizationUri: http://localhost:8304/uua/oauth/authorize
+#      clientAuthenticationScheme: form
+#    resource:
+#      userInfoUri: http://localhost:8304/uaa/user
+#      preferTokenInfo: false
+#  sessions: ALWAYS
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone:   http://localhost:8302/eureka/
+
+#security:
+#  basic:
+#      enabled: false
+#  oauth2:
+#    client:
+#      accessTokenUri: http://localhost:8304/uua/oauth/token
+#      userAuthorizationUri: http://localhost:8304/uua/oauth/authorize
+#      #clientAuthenticationScheme: form
+#      clientId: acme
+#      clientSecret: acmesecret
+#    resource:
+#      userInfoUri: http://localhost:8304/uaa/user
+#      preferTokenInfo: false
+#  sessions: ALWAYS
+
+#proxy:
+#  auth:
+#    routes:
+#      data-retriever: oauth2
+#      buy-service: oauth2
+#      #sidecar: oauth2
+
